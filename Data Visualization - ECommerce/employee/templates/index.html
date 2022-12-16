@@ -1,0 +1,56 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Index</title>  
+    {% load static %}  
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  
+    <style>
+      #first
+      {
+        float: left;
+        width: 50%;
+        margin-top: 150px;
+      }
+
+      #second
+      {
+        float: right;
+        width: 50%;
+        margin-top: 150px;
+      }
+      img
+      {
+        margin-top: 50px;
+      }
+    </style>
+</head>  
+<body>  
+<form method="post" class="post-form" action="/">  
+  {% csrf_token %}  
+  <div class="container">  
+    <div id="first">
+      <center>
+      <select id="first_select" name="first_select" onchange="form.submit()">
+        {% for data in list %}
+          <option value="{{  forloop.counter }}" {% if forloop.counter == val_f %}selected{% endif %}>{{  forloop.counter }}{{ data }}</option>
+        {% endfor %}
+      </select>
+      <img src="{% static 'first.png' %}" width="80%">
+    </center>
+    </div>
+    <div id="second">
+      <center>
+      <select id="second_select" name="second_select" onchange="form.submit()">
+        {% for data in list %}
+          <option value="{{  forloop.counter }}" {% if forloop.counter == val_s %}selected{% endif %}>{{  forloop.counter }}{{ data }}</option>
+        {% endfor %}
+      </select>
+      <img src="{% static 'second.png' %}" width="80%">
+    </center>
+    </div>
+
+  </div>  
+</form>  
+</body>  
+</html>  
